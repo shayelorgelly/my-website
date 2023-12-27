@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/tooltip/main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <title>Welcome to my website!</title>
+</head>
+<header>
+    <nav>
+        <ul id="navbar">
+            <li id="navbar-logo">
+                <a href="/" style="padding-top: 0; padding-bottom: 0"><!--override padding to make element fit better-->
+                    <div id="navbar-logo-div">
+                        <img src="/logo.svg" alt="logo" height="48">
+                        <div id="navbar-logo-text-wrapper">
+                            <p>Shaye's</p>
+                            <p>website.</p>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li>
+                <a data-is_button data-has_dropdown style="user-select: none">My projects</a>
+                <ol class="dropdown">
+                    <li>
+                        <a href="https://github.com/shayelorgelly/my-website">Website Source Code</a>
+                    </li>
+                    <li>
+                        <a href="/fizzbuzz">FizzBuzz</a>
+                    </li>
+                    <li>
+                        <a href="/places-from-the-portal">Places from the portal</a>
+                    </li>
+                </ol>
+            </li>
+            <li id="contact">
+                <a href="mailto://shaye.lorgelly@outlook.com" data-is_button>Contact</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<body>
+<main>
+
+</main>
+<!--    <footer>-->
+<!--        <div>-->
+<!--            <p>©Shaye Lorgelly 2023</p>-->
+<!--        </div>-->
+<!--    </footer>-->
+</body>
+</html>
+<data id="extras!" value="0">
+    <div id="guided_tour">
+        <link rel="stylesheet" href="tour.css">
+        <p>Would you be interested in a tour of my website?</p>
+        <button value="yes">Sure!</button>
+        <button value="no" onclick="document.getElementById('guided_tour').setAttribute('hidden', 'true')">No thanks.
+        </button>
+        <script>
+            y_button = document.querySelector(`#guided_tour > button[value="yes"]`);
+            y_button.addEventListener("click", () => {
+                alert("Great! Let's start the guided tour!");
+            });
+            document.onload = function () {
+                body.appendChild(document.querySelector("#guided_tour"))
+            }
+        </script>
+    </div>
+</data>

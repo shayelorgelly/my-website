@@ -1,0 +1,25 @@
+#guided_tour {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 200px;
+    border: 4px solid aqua;
+    animation: spinHue 2s linear infinite;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 50%);
+
+}
+#guided_tour > p {
+    margin: 0 0 5px;
+}
+#guided_tour > button {
+    color: white;
+    border-radius: 0;
+    background-color: #555555;
+        border: 1px solid white;
+}
+@keyframes spinHue {
+    to {
+        filter: hue-rotate(360deg);
+    }
+}

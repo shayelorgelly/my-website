@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/tooltip/main.css">
+    <link rel="stylesheet" href="/codebox.css">
+    <link rel="stylesheet" href="/fizzbuzz/style.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <title>Welcome to my website!</title>
+    <style>
+        body{
+            padding-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <ul id="navbar">
+            <li id="navbar-logo">
+                <a href="/" style="padding-top: 0; padding-bottom: 0"> <!--override padding to make element fit better-->
+                    <div id="navbar-logo-div">
+                        <img src="/logo.svg" alt="logo" height="48">
+                        <div id="navbar-logo-text-wrapper">
+                            <p>Shaye's</p>
+                            <p>website.</p>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/projects" data-is_button data-has_dropdown>Projects</a>
+                <ol class="dropdown">
+                    <li>
+                        <a href="https://github.com/shayelorgelly/my-website">Website Source</a>
+                    </li>
+                    <li>
+                        <a href="/fizzbuzz">fizzbuzz (node, py, java)</a>
+                    </li>
+                    <li>
+                        <a href="places-from-the-portal">Places from the portal (game)</a>
+                    </li>
+                </ol>
+            </li>
+            <li id="contact">
+                <a href="/contact" data-is_button>Contact</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>FizzBuzz</h1>
+    <h2>What is FizzBuzz?</h2>
+    <p>
+    For people unfamiliar with the concept, FizzBuzz is a coding challenge often used in interviews.
+    The task is to write a program that prints numbers from 1 to 100 while replacing multiples of 3 with "Fizz",
+    multiples of 5 with "Buzz" and multiples of both 3 and 3 with "FizzBuzz".
+    It may sound simple, and it is! However, it is a good way to show a programmers overall coding proficiency and
+    problem-solving abilities.
+    </p>
+    <h2>My Journey with FizzBuzz</h2>
+    <p>
+
+        It all started one evening when my friend introduced me to the programming challenge known as FizzBuzz.  Whether it was from my quest for more coding knowledge or just pure boredom, I immediately felt motivated by the challenge presented. My friend introduced me to the basics and laid out the rules. I thought it would be a easy task however as I refined the code further it got a little more complex than I anticipated.
+        I began experimenting with my favorite programming language, JavaScript and after a few tests, i had written a script which looped through all the numbers, divided them by 3 and 5 and checked if the results were integers or float-point numbers.
+    </p>
+    <pre class="codebox">for (let i = 1; i <= 100; i++) {
+    if (Number.isInteger(i / 3) && Number.isInteger(i / 5)) {
+        console.log("FizzBuzz");
+    } else if (Number.isInteger(i / 3)) {
+        console.log("Fizz");
+    } else if (Number.isInteger(i / 5)) {
+        console.log("Buzz");
+    } else {
+        console.log(i);
+    }
+}
+    </pre>
+    <p>Translating the code to other languages was very easy for me, as i have experience with writing code in other languages.<br> I added this box, so you can test my code!</p>
+    <select name="b" id="selection">
+        <option value="javascriptcode">JavaScript</option>
+        <option value="javacode">Java</option>
+        <option value="pythoncode">Python</option>
+    </select>
+    <ol id="coderunnerboxtypething">
+        <li id="javascriptcode">
+            <pre class="codebox">for (i = 1; i < 101; i++) {
+    console.log(function () {
+        switch (i % 15) {
+            case 0:
+                return "FizzBuzz";
+            case 3:
+            case 6:
+            case 9:
+            case 12:
+                return "Fizz";
+            case 5:
+            case 10:
+                return "Buzz";
+            default:
+                return i
+        }
+    }())
+}</pre>
+            <pre class="output" id="outputBox">code output here</pre>
+            <button class="runButton" id="_0" data-lang="javascriptcode">Run</button>
+            <label for="_0"></label>
+        </li>
+
+
+
+        <li hidden id="javacode">
+            <pre class="codebox">package net.shayelorgelly;
+//arrow casing requires at least java 12
+public class Main {
+    public static void main(String[] args) {
+        for (int i = 1; i < 101; i++) {
+            System.out.println(switch (i % 15) {
+                case 0 -> "FizzBuzz";
+                case 3,6,9,12 -> "Fizz";
+                case 5,10 -> "Buzz";
+                default -> i;
+            });
+        }
+    }
+}</pre>
+            <pre class="output" id="outputBox2">code output here</pre>
+            <button class="runButton" id="1_" data-lang="javacode">Run</button>
+            <label for="1_">(this actually runs in javascript but the java code does the exact same thing)</label>
+        </li>
+
+
+
+        <li hidden id="pythoncode">
+            <pre class="codebox">for i in range(1, 101):
+    elif i % 15 == 0:
+        print("FizzBuzz")
+    if i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)</pre>
+            <pre class="output" id="outputBox3">code output here</pre>
+            <button class="runButton" id="2_" data-lang="pythoncode">Run</button>
+            <label for="2_" >(this actually runs in javascript but the java code does the exact same thing)</label>
+        </li>
+    </ol>
+    <script>
+        const select = document.getElementById("selection");
+        const codeSections = document.querySelectorAll("#coderunnerboxtypething li");
+        const runButtons = document.querySelectorAll(".runButton");
+
+        runButtons.forEach((button) => {
+            button.onclick = () => {
+                const lang = button.getAttribute("data-lang");
+                const parent = button.parentElement
+                const outputBox = parent.querySelector(".output");
+                outputBox.textContent = "";
+
+                for (let i = 1; i < 101; i++) {
+                    outputBox.textContent += "\n" + (function () {
+                        switch (i % 15) {
+                            case 0:
+                                return "FizzBuzz";
+                            case 3:
+                            case 6:
+                            case 9:
+                            case 12:
+                                return "Fizz";
+                            case 5:
+                            case 10:
+                                return "Buzz";
+                            default:
+                                return i;
+                        }
+                    }());
+                }
+            };
+        });
+
+        select.onchange = () => {
+            const selectedValue = select.value;
+
+            codeSections.forEach((section) => {
+                section.setAttribute("hidden", "true");
+            });
+
+            const selectedSection = document.getElementById(selectedValue);
+            selectedSection.removeAttribute("hidden");
+        };
+    </script>
+</main>
+
+
+</body>
+<!--<footer>footer doesnt work-->
+<!--    <div>-->
+<!--        <p>©Shaye Lorgelly 2023</p>-->
+<!--    </div>-->
+<!--</footer>-->
+</html>
